@@ -2,7 +2,7 @@
 
 let
   after = lib.hm.dag.entryAfter;
-  cfg = config.myHomeModules.i3blocks;
+  cfg = config.myHomeModules;
 in
 
 {
@@ -19,7 +19,7 @@ in
 
   options.myHomeModules.i3blocks.enable = lib.mkEnableOption "enable i3blocks";
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.i3.enable (lib.mkIf cfg.i3blocks.enable {
     programs.i3blocks =
     { enable = true;
 
@@ -67,6 +67,6 @@ in
         };
       };
     };
-  };
+  });
 
 }

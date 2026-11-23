@@ -26,7 +26,7 @@ in
         "super + ctrl {h,k,j,l} " = "i3-msg {resize shrink width 10 px or 10 ppt, resize grow height 10 px or 10 ppt, resize shrink height 10 px or 10 ppt, resize grow width 10 px or 10 ppt}";
         "super + shift {c,r,e}" = "{i3-msg reload, pkill sxhkd && i3-msg restart, i3-nagbar -t \"Warning\" -m \"EXIT??\" -B \"Yes\" \"i3-msg exit\"}";
 
-        "super + d" = "rofi -show drun -show-icons";
+        "super + period" = "rofi -show drun -show-icons";
         "super + p" = "~/.config/rofi/scripts/player.sh";
         "super + o" = "~/.config/rofi/scripts/calendar.sh";
 

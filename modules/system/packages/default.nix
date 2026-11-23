@@ -16,7 +16,7 @@ in
 
   config = lib.mkMerge
   [ (lib.mkIf cfg.default.enable
-    { environment.systemPackages = with pkgs; 
+    { environment.systemPackages = with pkgs;
       [ neovim
         p7zip
         btop
@@ -30,7 +30,7 @@ in
     })
 
     (lib.mkIf cfg.font.enable
-    { fonts.packages = with pkgs; 
+    { fonts.packages = with pkgs;
       [ nerd-fonts.jetbrains-mono
       ];
     })
@@ -42,8 +42,9 @@ in
         http-connections = 50;
         download-buffer-size = 536870912;
 
-        # keep-outputs = true;
-        # keep-derivations = true;
+        keep-outputs = true;
+        keep-derivations = true;
+
         auto-optimise-store = true;
 
         trusted-users = [ "root" "@wheel" ];

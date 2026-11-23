@@ -118,6 +118,11 @@ in
           [{ fonts = { names = [ "JetBrainsMono Nerd Font" ]; size = 7.0; };
              statusCommand = "${pkgs.i3blocks}/bin/i3blocks -c ~/.config/i3blocks/config";
              colors = myBarColors;
+             extraConfig =
+             ''bindsym button1 nop
+               #bindsym button4 nop
+               #bindsym button5 nop
+             '';
           }];
 
           startup =

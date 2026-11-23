@@ -4,7 +4,7 @@ let
   cfg = config.myModules;
 in
 
-{ 
+{
 
   options.myModules = 
   { networkmanager.enable = lib.mkEnableOption "enable nerworkmanager";
