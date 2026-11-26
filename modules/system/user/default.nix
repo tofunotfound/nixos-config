@@ -2,7 +2,7 @@
 
 {
 
-  users.users.tofu = 
+  users.users.tofu =
   { isNormalUser = true;
     shell = pkgs.fish;
     extraGroups = [ "networkmanager" "wheel" ];

@@ -25,6 +25,10 @@ in
 
       settings =
       { dpi = cfg.rofi.dpi;
+
+        matching = "fuzzy";
+        sort = true;
+        sorting-method = "fzf";
       };
     };
 
