@@ -1,25 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
-
-let
-  cfg = config.myHomeModules.theme.catppuccin;
-in
+{ osConfig, lib, ... }:
 
 {
 
-  imports =
-  [ inputs.catppuccin.homeModules.catppuccin
-  ];
-
-  options.myHomeModules.theme.catppuccin.enable = lib.mkEnableOption "enable theme";
-
-  config = lib.mkIf cfg.enable
-  { catppuccin =
-    { enable = true;
-      autoEnable = true;
-
-      flavor = "mocha";
-      accent = "mauve";
+  stylix =
+  { targets.firefox = lib.mkIf osConfig.myModules.theme.stylix.enable
+    { profileNames = [ "default" ];
+      colorTheme.enable = true;
     };
+
+    fonts.sizes.terminal = 11;
   };
 
 }

@@ -21,8 +21,6 @@ in
           frame_width = 1;
           padding = 10;
           horizontal_padding = 10;
-
-          font = "JetBrains Mono 11";
         };
       };
     };

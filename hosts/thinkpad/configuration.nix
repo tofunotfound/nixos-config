@@ -8,7 +8,7 @@
   i18n.defaultLocale = "ru_RU.UTF-8";
 
 
-  programs = 
+  programs =
   { fish.enable = true;
     tmux.enable = true;
 
@@ -29,10 +29,13 @@
     zram.enable = true;
     openssh.enable = true;
 
-    packages = 
+    packages =
     { default.enable = true;
       brightnessctl.enable = true;
-      font.enable = true;
+    };
+
+    theme =
+    { stylix.enable = true;
     };
   };
 

@@ -2,6 +2,7 @@
 
 let
   cfg = config.myHomeModules;
+  inherit (config.lib.formats.rasi) mkLiteral;
 in
 
 {
@@ -20,8 +21,6 @@ in
 
     programs.rofi =
     { enable = true;
-
-      theme = lib.mkIf (!cfg.theme.catppuccin.enable) "${pkgs.rofi}/share/rofi/themes/Arc-Dark";
 
       settings =
       { dpi = cfg.rofi.dpi;

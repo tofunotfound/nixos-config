@@ -11,7 +11,6 @@ in
   options.myModules.packages =
   { default.enable = lib.mkEnableOption "enable default pkgs";
     brightnessctl.enable = lib.mkEnableOption "enable brightnessctl";
-    font.enable = lib.mkEnableOption "enable jetbrains font";
   };
 
   config = lib.mkMerge
@@ -29,12 +28,6 @@ in
     { environment.systemPackages = [ pkgs.brightnessctl ];
     })
 
-    (lib.mkIf cfg.font.enable
-    { fonts.packages = with pkgs;
-      [ nerd-fonts.jetbrains-mono
-      ];
-    })
-
     (lib.mkIf config.myModules.default.enable
     { nix.settings =
       { max-jobs = "auto";
@@ -42,8 +35,8 @@ in
         http-connections = 50;
         download-buffer-size = 536870912;
 
-        keep-outputs = true;
-        keep-derivations = true;
+        #keep-outputs = true;
+        #keep-derivations = true;
 
         auto-optimise-store = true;
 

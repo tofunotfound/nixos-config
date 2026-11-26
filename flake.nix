@@ -1,6 +1,6 @@
 {
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, tele-client, catppuccin, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, tele-client, stylix, ... }@inputs:
 
     let
       commonModules =
@@ -8,6 +8,7 @@
 
         home-manager.nixosModules.home-manager
         nixos-wsl.nixosModules.default
+        stylix.nixosModules.stylix
       ];
     in
 
@@ -40,7 +41,10 @@
       nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
       tele-client.url = "github:sorokin-vladimir/tele";
-      catppuccin.url = "github:catppuccin/nix";
+      tele-client.inputs.nixpkgs.follows = "nixpkgs";
+
+      stylix.url = "github:danth/stylix";
+      stylix.inputs.nixpkgs.follows = "nixpkgs";
     };
 
 }

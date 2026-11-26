@@ -3,11 +3,12 @@
 {
  
   myHomeModules =
-  { alacritty.enable = true;
+  { terminal = "kitty";
+
     dunst.enable = true;
     fastfetch.enable = true;
     fish.enable = true;
-    gtk.enable = true;
+    gtk.enable = false;
     i3.enable = true;
     i3blocks.enable = true;
     nvim.enable = true;
@@ -29,11 +30,7 @@
       warpd.enable = true;
       firefox.enable = true;
       opencode.enable = false;
-      tele.enable = false;
-    };
-
-    theme =
-    { catppuccin.enable = true;
+      tele.enable = true;
     };
   };
 

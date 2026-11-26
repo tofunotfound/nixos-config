@@ -11,6 +11,7 @@
     config = lib.mkIf cfg.firefox.enable
     { programs.firefox =
       { enable = true;
+
         profiles.default =
         { isDefault = true;
 

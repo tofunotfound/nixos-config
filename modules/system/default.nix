@@ -2,7 +2,7 @@
 
 {
 
-  imports = 
+  imports =
   [ ./user
     ./bluetooth
     ./features
@@ -12,6 +12,7 @@
     ./pipewire
     ./openssh
     ./boot
+    ./theme
   ];
  
 }

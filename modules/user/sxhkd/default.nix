@@ -32,7 +32,8 @@ in
 
         "Print" = "bash -c 'maim -s | xclip -selection clipboard -t image/png'"; #tee -p \"$HOME/path/\$(date +'%Y-%m-%d_%H-%M-%S').png\" |
 
-        "super + Return" = "${pkgs.alacritty}/bin/alacritty";
+        #"super + Return" = "${pkgs.alacritty}/bin/alacritty";
+        "super + Return" = "i3-sensible-terminal";
 
         "XF86MonBrightness{Up,Down}" = "brightnessctl set {+5%,5%-}";
         "XF86Display" = "[ \"\$(brightnessctl get)\" -gt 0 ] && brightnessctl get > /tmp/brightness_back && brightnessctl set 0 || brightnessctl set \$(cat /tmp/brightness_back)";

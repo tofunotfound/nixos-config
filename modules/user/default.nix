@@ -3,7 +3,7 @@
 {
 
   imports =
-  [ ./alacritty
+  [ ./terminal
     ./xresources
     ./fastfetch
     ./fish
@@ -18,8 +18,8 @@
     ./nixpkgs
     ./dunst
     ./packages
-    ./theme
     ./firefox
+    ./theme
   ];
 
 }

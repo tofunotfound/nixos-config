@@ -14,26 +14,32 @@ in
 
       settings =
       { logo =
-        { source = "none";
+        { source = "NixOS2";
           padding.right = 1;
         };
+
+        display.disableLinewrap = true;
 
         modules =
         [ #"title"
           #"separator"
+
+          "break"
+
           "os"
           "host"
           "kernel"
           "uptime"
           "packages"
           "shell"
-          #"display"
+          "display"
+          #"de"
           "wm"
           "wmtheme"
           "theme"
-          #"icons"
+          "icons"
           "font"
-          #"cursor"
+          "cursor"
           "terminal"
           "terminalfont"
           "cpu"
@@ -41,11 +47,11 @@ in
           "memory"
           "swap"
           "disk"
-          #"localip"
           "battery"
           "poweradapter"
+          "localip"
           "locale"
-          #"break"
+          "break"
           #"colors"
         ];
       };
