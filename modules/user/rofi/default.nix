@@ -17,7 +17,6 @@ in
   config = lib.mkIf cfg.rofi.enable {
     home.packages = with pkgs;
       [ util-linux playerctl feh ];
-      #++ lib.optional (!cfg.packages.playerctl.enable) playerctl;
 
     programs.rofi =
     { enable = true;
@@ -331,7 +330,7 @@ in
 
         set -u
 
-        wallpaper_dir="$HOME/walpapers"
+        wallpaper_dir="$HOME/wallpapers"
         script_path=$(readlink -f "$0")
         random_script="$wallpaper_dir/random.sh"
 
