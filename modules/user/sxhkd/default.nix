@@ -12,10 +12,12 @@ in
   { services.sxhkd =
     { enable = true;
 
-      keybindings = 
+      keybindings =
       { "XF86Audio{Raise,Lower}Volume" = "wpctl set-volume @DEFAULT_SINK@ {5%+,5%-} && pkill -RTMIN+10 i3blocks";
         "XF86AudioMute" = "wpctl set-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks";
         "XF86AudioMicMute" = "wpctl set-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+10 i3blocks";
+        "XF86MonBrightness{Up,Down}" = "brightnessctl set {+5%,5%-}";
+        "XF86Display" = "sh -c '[ \"$(brightnessctl get)\" -gt 0 ] && brightnessctl get > /tmp/brightness_back && brightnessctl set 0 || brightnessctl set \"$(cat /tmp/brightness_back)\"'";
         "XF86Audio{Next,Prev,Play}" = "playerctl {next,previous,play-pause}";
 
         "super + {_,shift} + {h,j,k,l}" = "i3-msg {focus,move}{left,down,up,right}";
@@ -28,15 +30,10 @@ in
         "super + comma" = "rofi -show drun -show-icons";
         "super + p" = "~/.config/rofi/scripts/player.sh";
         "super + o" = "~/.config/rofi/scripts/calendar.sh";
-        "super + w" = "~/.config/rofi/scripts/wallpaper.sh";
 
-        "Print" = "bash -c 'maim -s | xclip -selection clipboard -t image/png'"; #tee -p \"$HOME/path/\$(date +'%Y-%m-%d_%H-%M-%S').png\" |
+        "Print" = "bash -c 'maim -s | xclip -selection clipboard -t image/png'";
 
-        #"super + Return" = "${pkgs.alacritty}/bin/alacritty";
         "super + Return" = "i3-sensible-terminal";
-
-        "XF86MonBrightness{Up,Down}" = "brightnessctl set {+5%,5%-}";
-        "XF86Display" = "[ \"\$(brightnessctl get)\" -gt 0 ] && brightnessctl get > \"\${XDG_RUNTIME_DIR:-/tmp}/brightness_back\" && brightnessctl set 0 || brightnessctl set \$(cat \"\${XDG_RUNTIME_DIR:-/tmp}/brightness_back\")";
 
         "super + {x,c,g}" = "warpd {--hint,--normal,--grid}";
       };

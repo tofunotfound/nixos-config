@@ -24,6 +24,8 @@ in
 
         settings =
         { confirm_os_window_close = 0;
+
+          modify_font = "cell_height -4px";
         };
       };
     })

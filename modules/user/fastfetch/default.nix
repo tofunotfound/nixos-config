@@ -14,10 +14,13 @@ in
 
       settings =
       { logo =
-        { source = "~/098/fastfetch";
-          padding.right = 0;
-          width = 30;
-          height = 21;
+        { source = "NixOS2";
+          padding =
+          { right = 1;
+            left = 1;
+          };
+          #width = 30;
+          #height = 19;
         };
 
         display.disableLinewrap = true;
@@ -34,13 +37,13 @@ in
           "display"
           #"de"
           "wm"
-          "wmtheme"
-          "theme"
-          "icons"
-          "font"
+          #"wmtheme"
+          #"theme"
+          #"icons"
+          #"font"
           "cursor"
           "terminal"
-          "terminalfont"
+          #"terminalfont"
           "cpu"
           "gpu"
           "memory"
