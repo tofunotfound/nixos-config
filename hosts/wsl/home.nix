@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  
+
   myHomeModules = 
   { alacritty.enable = false;
     dunst.enable = false;

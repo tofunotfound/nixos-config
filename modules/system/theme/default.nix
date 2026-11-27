@@ -16,7 +16,7 @@ in
       { base00 = "000000";
         base01 = "0c0c0e";
         base02 = "18181c";
-        base03 = "2a2a32";
+        base03 = "4c4c57";
         base04 = "71717a";
         base05 = "d4d4d8";
         base06 = "e4e4e7";

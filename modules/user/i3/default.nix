@@ -38,32 +38,32 @@ in
             (
 
               let
-                c = config.lib.stylix.colors.withHashtag;
+                cfg = config.lib.stylix.colors.withHashtag;
               in
 
-            { background = c.base00;
-              statusline = c.base05;
-              separator = c.base03;
+            { background = cfg.base00;
+              statusline = cfg.base05;
+              separator = cfg.base03;
 
               focusedWorkspace = {
-                border = c.base0D;
-                background = c.base02;
-                text = c.base07;
+                border = cfg.base0D;
+                background = cfg.base02;
+                text = cfg.base07;
               };
               activeWorkspace = {
-                border = c.base03;
-                background = c.base01;
-                text = c.base05;
+                border = cfg.base03;
+                background = cfg.base01;
+                text = cfg.base05;
               };
               inactiveWorkspace = {
-                border = c.base00;
-                background = c.base00;
-                text = c.base04;
+                border = cfg.base00;
+                background = cfg.base00;
+                text = cfg.base04;
               };
               urgentWorkspace = {
-                border = c.base08;
-                background = c.base08;
-                text = c.base00;
+                border = cfg.base08;
+                background = cfg.base08;
+                text = cfg.base00;
               };
             });
           }];
@@ -73,7 +73,7 @@ in
             { command = "setxkbmap -layout 'us,ru' -option 'grp:win_space_toggle'"; always = true; notification = false; }
             { command = "-merge ~/.Xresources"; notification = false; }
             { command = "sxhkd"; always = true; notification = false; }
-            { command = "~/walpapers/random.sh"; always = true; notification = false; }
+            { command = "feh --bg-scale ~/098/walpapers"; always = true; notification = false; }
           ];
         };
       };

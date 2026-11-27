@@ -14,8 +14,10 @@ in
 
       settings =
       { logo =
-        { source = "NixOS2";
-          padding.right = 1;
+        { source = "~/098/fastfetch";
+          padding.right = 0;
+          width = 30;
+          height = 21;
         };
 
         display.disableLinewrap = true;

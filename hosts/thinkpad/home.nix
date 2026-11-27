@@ -8,16 +8,17 @@
     dunst.enable = true;
     fastfetch.enable = true;
     fish.enable = true;
-    gtk.enable = false;
     i3.enable = true;
     i3blocks.enable = true;
     nvim.enable = true;
+
     rofi.enable = true;
     rofi.dpi = 200;
 
     sxhkd.enable = true;
     syncthing.enable = true;
     unclutter.enable = true;
+
     xresources.enable = true;
     xresources.dpi = 140;
 
@@ -30,6 +31,7 @@
       warpd.enable = true;
       firefox.enable = true;
       opencode.enable = false;
+      discord.enable = true;
       tele.enable = true;
     };
   };

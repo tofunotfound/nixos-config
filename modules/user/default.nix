@@ -7,7 +7,6 @@
     ./xresources
     ./fastfetch
     ./fish
-    ./gtk
     ./i3
     ./i3blocks
     ./syncthing
