@@ -16,7 +16,7 @@ in
 
   config = lib.mkIf cfg.rofi.enable {
     home.packages = with pkgs;
-      [ util-linux playerctl ];
+      [ util-linux playerctl feh ];
       #++ lib.optional (!cfg.packages.playerctl.enable) playerctl;
 
     programs.rofi =
@@ -321,6 +321,85 @@ in
         printf '%s\0nonselectable\x1ftrue\n' "''${prev_icon}"
         printf '%s\0nonselectable\x1ftrue\n' "''${toggle_icon}"
         printf '%s\0nonselectable\x1ftrue\n' "''${next_icon}"
+      '';
+    };
+
+    xdg.configFile."rofi/scripts/wallpaper.sh" =
+    { executable = true;
+      text = ''
+        #!${pkgs.bash}/bin/bash
+
+        set -u
+
+        wallpaper_dir="$HOME/walpapers"
+        script_path=$(readlink -f "$0")
+        random_script="$wallpaper_dir/random.sh"
+
+        # Try to render any file as an icon; rofi will simply show no preview if it cannot.
+
+        # Launch rofi in script mode when invoked directly.
+        if [[ -z "''${ROFI_RETV:-}" ]]; then
+          exec rofi -show wallpaper \
+            -modes "wallpaper:''${script_path}" \
+            -show-icons \
+            -theme-str 'window { fullscreen: false; width: 34em; }' \
+            -theme-str 'mainbox { orientation: horizontal; children: [ listview, icon-current-entry ]; padding: 0.6em; spacing: 0.8em; }' \
+            -theme-str 'listview { lines: 6; scrollbar: true; fixed-height: true; expand: true; }' \
+            -theme-str 'element { padding: 0.3em; }' \
+            -theme-str 'element-text { vertical-align: 0.5; }' \
+            -theme-str 'icon-current-entry { enabled: true; expand: false; size: 16em; padding: 0; border: 0; }'
+        fi
+
+        # Handle selection (Enter).
+        if [[ "''${ROFI_RETV:-0}" == "1" ]]; then
+          selected="''${ROFI_INFO:-}"
+          if [[ -z "$selected" && -n "''${1:-}" ]]; then
+            selected="$wallpaper_dir/$1"
+          fi
+          if [[ -n "$selected" && -e "$selected" ]]; then
+            if [[ "$selected" == "$random_script" ]]; then
+              "$random_script" >/dev/null 2>&1 &
+              disown
+            else
+              feh --bg-scale -- "$selected" >/dev/null 2>&1 &
+              disown
+            fi
+          fi
+          exit 0
+        fi
+
+        # Populate list.
+        if [[ ! -d "$wallpaper_dir" ]]; then
+          printf '\0message\x1f%s\n' "Directory not found: $wallpaper_dir"
+          printf 'No wallpapers\0nonselectable\x1ftrue\n'
+          exit 0
+        fi
+
+        shopt -s nullglob nocaseglob
+        files=("$wallpaper_dir"/*)
+        shopt -u nocaseglob
+
+        if (( ''${#files[@]} == 0 )); then
+          printf '\0message\x1f%s\n' "No files in $wallpaper_dir"
+          printf 'No wallpapers\0nonselectable\x1ftrue\n'
+          exit 0
+        fi
+
+        if [[ -f "$random_script" ]]; then
+          printf '%s\0icon\x1f%s\x1finfo\x1f%s\n' "random.sh" "$random_script" "$random_script"
+        fi
+
+        for f in "''${files[@]}"; do
+          [[ -f "$f" ]] || continue
+          [[ "$f" == "$random_script" ]] && continue
+          name=$(basename -- "$f")
+          display="$name"
+          max_len=24
+          if (( ''${#display} > max_len )); then
+            display="''${display:0:max_len-1}…"
+          fi
+          printf '%s\0icon\x1f%s\x1finfo\x1f%s\n' "$display" "$f" "$f"
+        done
       '';
     };
   };

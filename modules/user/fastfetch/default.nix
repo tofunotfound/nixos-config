@@ -23,9 +23,6 @@ in
         modules =
         [ #"title"
           #"separator"
-
-          "break"
-
           "os"
           "host"
           "kernel"
@@ -51,7 +48,7 @@ in
           "poweradapter"
           "localip"
           "locale"
-          "break"
+          #"break"
           #"colors"
         ];
       };

@@ -73,6 +73,7 @@ in
             { command = "setxkbmap -layout 'us,ru' -option 'grp:win_space_toggle'"; always = true; notification = false; }
             { command = "-merge ~/.Xresources"; notification = false; }
             { command = "sxhkd"; always = true; notification = false; }
+            { command = "~/walpapers/random.sh"; always = true; notification = false; }
           ];
         };
       };
