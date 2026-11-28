@@ -1,38 +1,58 @@
 { ... }:
 
 {
- 
+
   myHomeModules =
-  { terminal = "kitty";
+  { desktop =
+    { i3.enable = true;
+      i3blocks.enable = true;
+      dunst.enable = true;
 
-    dunst.enable = true;
-    fastfetch.enable = true;
-    fish.enable = true;
-    i3.enable = true;
-    i3blocks.enable = true;
-    nvim.enable = true;
+      rofi =
+      { enable = true;
+        dpi = 200;
+      };
 
-    rofi.enable = true;
-    rofi.dpi = 200;
+      xresources =
+      { enable = true;
+        dpi = 140;
+      };
+    };
 
-    sxhkd.enable = true;
-    syncthing.enable = true;
-    unclutter.enable = true;
-
-    xresources.enable = true;
-    xresources.dpi = 140;
-
-    packages =
-    { yazi.enable = true;
+    terminal =
+    { default = "kitty"; #"kitty" or "alacritty"
+      fish.enable = true;
+      nvim.enable = true;
+      fastfetch.enable = true;
+      yazi.enable = true;
       btop.enable = true;
-      playerctl.enable = true;
-      mpv.enable = false;
-      maim.enable = true;
+    };
+
+    services =
+    { sxhkd.enable = true;
+      syncthing.enable = true;
+      unclutter.enable = true;
       warpd.enable = true;
-      firefox.enable = true;
-      opencode.enable = false;
-      discord.enable = true;
-      tele.enable = true;
+    };
+
+    apps =
+    { firefox.enable = true;
+
+      media =
+      { mpv.enable = false;
+        feh.enable = true;
+      };
+
+      messenger =
+      { discord.enable = true;
+        telegram.enable = true;
+      };
+    };
+
+    tools =
+    { maim.enable = true;
+      playerctl.enable = true;
+      opencode.enable = true;
     };
   };
 

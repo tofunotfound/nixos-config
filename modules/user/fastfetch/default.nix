@@ -1,12 +1,12 @@
 { config, lib, ... }:
 
 let
-  cfg = config.myHomeModules.fastfetch;
+  cfg = config.myHomeModules.terminal.fastfetch;
 in
 
 {
 
-  options.myHomeModules.fastfetch.enable = lib.mkEnableOption "enable fastfetch";
+  options.myHomeModules.terminal.fastfetch.enable = lib.mkEnableOption "enable fastfetch";
 
   config = lib.mkIf cfg.enable
   { programs.fastfetch =

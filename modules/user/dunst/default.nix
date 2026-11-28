@@ -1,15 +1,15 @@
 { config, lib, ... }:
 
 let
-  cfg = config.myHomeModules.dunst;
+  cfg = config.myHomeModules.desktop.dunst;
 in
 
 {
 
-  options.myHomeModules.dunst.enable = lib.mkEnableOption "enable dunst";
+  options.myHomeModules.desktop.dunst.enable = lib.mkEnableOption "enable dunst";
 
-  config = lib.mkIf cfg.enable {
-    services.dunst =
+  config = lib.mkIf cfg.enable
+  { services.dunst =
     { enable = true;
 
       settings =

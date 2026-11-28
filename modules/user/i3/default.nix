@@ -1,12 +1,12 @@
 { config, osConfig, lib, pkgs, ... }:
 
 let
-  cfg = config.myHomeModules;
+  cfg = config.myHomeModules.desktop;
 in
 
 {
 
-  options.myHomeModules.i3.enable = lib.mkEnableOption "i3 settings";
+  options.myHomeModules.desktop.i3.enable = lib.mkEnableOption "i3 settings";
 
   config = lib.mkIf cfg.i3.enable
   { xsession =
@@ -34,7 +34,7 @@ in
               #bindsym button5 nop
             '';
 
-            colors = lib.mkIf osConfig.myModules.theme.stylix.enable
+            colors = lib.mkIf osConfig.myModules.desktop.theme.stylix.enable
             (
 
               let

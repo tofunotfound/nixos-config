@@ -1,12 +1,12 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.myHomeModules.sxhkd;
+  cfg = config.myHomeModules.services.sxhkd;
 in
 
 {
 
-  options.myHomeModules.sxhkd.enable = lib.mkEnableOption "enable sxhkd";
+  options.myHomeModules.services.sxhkd.enable = lib.mkEnableOption "enable sxhkd";
 
   config = lib.mkIf cfg.enable
   { services.sxhkd =

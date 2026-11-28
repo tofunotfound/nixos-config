@@ -1,12 +1,12 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.myHomeModules.unclutter;
+  cfg = config.myHomeModules.services.unclutter;
 in
 
 {
 
-  options.myHomeModules.unclutter.enable = lib.mkEnableOption "enable unclutter";
+  options.myHomeModules.services.unclutter.enable = lib.mkEnableOption "enable unclutter";
 
   config = lib.mkIf cfg.enable
   { services.unclutter =

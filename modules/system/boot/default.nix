@@ -1,12 +1,12 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  cfg = config.myModules.boot;
+  cfg = config.myModules.system.boot;
 in
 
 {
 
-  options.myModules.boot = lib.mkOption
+  options.myModules.system.boot = lib.mkOption
   { type = lib.types.enum [ "systemd" "wsl" ];
     default= "systemd";
   };

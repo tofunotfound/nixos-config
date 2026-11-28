@@ -2,34 +2,49 @@
 
 {
 
-  myHomeModules = 
-  { alacritty.enable = false;
-    dunst.enable = false;
-    fastfetch.enable = true;
-    fish.enable = true;
-    gtk-3.enable = false;
-    i3.enable = false;
-    i3blocks.enable = false;
-    nvim.enable = true;
-    rofi.enable = false;
-    sxhkd.enable = false;
-    syncthing.enable = false;
-    unclutter.enable = false;
-    xresources.enable = false;
-
-    packages = 
-    { default.enable = true;
-      playerctl.enable = false;
-      mpv.enable = false;
-      maim.enable = false;
-      warpd.enable = false;
-      firefox.enable = false;
-      opencode.enable = false;
-      tele.enable = false;
+  myHomeModules =
+  { desktop =
+    { i3.enable = false;
+      i3blocks.enable = false;
+      dunst.enable = false;
+      rofi.enable = false;
+      xresources.enable = false;
     };
 
-    theme =
-    { catppuccin.enable = false;
+    terminal =
+    { default = "null"; #"kitty" or "alacritty"
+      fish.enable = true;
+      nvim.enable = true;
+      fastfetch.enable = true;
+      yazi.enable = true;
+      btop.enable = true;
+    };
+
+    services =
+    { sxhkd.enable = false;
+      syncthing.enable = false;
+      unclutter.enable = false;
+      warpd.enable = false;
+    };
+
+    apps =
+    { firefox.enable = false;
+
+      media =
+      { mpv.enable = false;
+        feh.enable = false;
+      };
+
+      messenger =
+      { discord.enable = false;
+        telegram.enable = false;
+      };
+    };
+
+    tools =
+    { maim.enable = false;
+      playerctl.enable = false;
+      opencode.enable = false;
     };
   };
 

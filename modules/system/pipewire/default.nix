@@ -1,15 +1,15 @@
 { config, lib, ... }:
 
 let
-  cfg = config.myModules.pipewire;
+  cfg = config.myModules.hardware.pipewire;
 in
 
 {
 
-  options.myModules.pipewire.enable = lib.mkEnableOption "enable pipewire";
+  options.myModules.hardware.pipewire.enable = lib.mkEnableOption "enable pipewire";
 
   config = lib.mkIf cfg.enable
-  { services.pipewire = 
+  { services.pipewire =
     { enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;

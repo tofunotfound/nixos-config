@@ -3,7 +3,7 @@
 {
 
   stylix =
-  { targets.firefox = lib.mkIf osConfig.myModules.theme.stylix.enable
+  { targets.firefox = lib.mkIf osConfig.myModules.desktop.theme.stylix.enable
     { profileNames = [ "default" ];
       colorTheme.enable = true;
     };

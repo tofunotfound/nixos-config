@@ -1,34 +1,33 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.myModules.packages;
+  cfg = config.myModules;
 in
 
 {
  
-  options.myModules.default.enable = lib.mkEnableOption "default nix.settings";
+  options.myModules.system.settings.default.enable = lib.mkEnableOption "default nix.settings";
 
-  options.myModules.packages =
-  { default.enable = lib.mkEnableOption "enable default pkgs";
-    brightnessctl.enable = lib.mkEnableOption "enable brightnessctl";
-  };
+  options.myModules.packages.default.enable = lib.mkEnableOption "enable default pkgs";
+  options.myModules.hardware.brightnessctl.enable = lib.mkEnableOption "enable brightnessctl";
 
   config = lib.mkMerge
-  [ (lib.mkIf cfg.default.enable
+  [ (lib.mkIf cfg.packages.default.enable
     { environment.systemPackages = with pkgs;
       [ neovim
         p7zip
         btop
+        git
       ];
 
       environment.variables.EDITOR = "nvim";
     })
 
-    (lib.mkIf cfg.brightnessctl.enable
+    (lib.mkIf cfg.hardware.brightnessctl.enable
     { environment.systemPackages = [ pkgs.brightnessctl ];
     })
 
-    (lib.mkIf config.myModules.default.enable
+    (lib.mkIf config.myModules.system.settings.default.enable
     { nix.settings =
       { max-jobs = "auto";
         cores = 0;

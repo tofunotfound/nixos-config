@@ -1,12 +1,12 @@
 { config, lib, ... }:
 
 let
-  cfg = config.myModules.bluetooth;
+  cfg = config.myModules.hardware.bluetooth;
 in
 
 {
 
-  options.myModules.bluetooth.enable = lib.mkEnableOption "enable bluetooth";
+  options.myModules.hardware.bluetooth.enable = lib.mkEnableOption "enable bluetooth";
 
   config = lib.mkIf cfg.enable
   { hardware.bluetooth =

@@ -2,7 +2,7 @@
 
 {
 
-  nixpkgs.config = 
+  nixpkgs.config =
   { allowUnfree = true;
   };
 

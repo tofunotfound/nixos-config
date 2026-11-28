@@ -1,12 +1,12 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.myModules.xserveri3;
+  cfg = config.myModules.desktop.displayServer.xserver.i3;
 in
 
 {
 
-  options.myModules.xserveri3.enable = lib.mkEnableOption "enable xserver with i3";
+  options.myModules.desktop.displayServer.xserver.i3.enable = lib.mkEnableOption "enable xserver with i3";
 
   config = lib.mkIf cfg.enable
   { services =

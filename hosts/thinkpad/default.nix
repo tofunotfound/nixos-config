@@ -2,6 +2,12 @@
 
 {
 
+  users.users.tofu =
+  { isNormalUser = true;
+    shell = pkgs.fish;
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
   imports =
   [ ./configuration.nix
     ./hardware-configuration.nix
@@ -15,12 +21,10 @@
     home.backupFileExtension = "backup";
     home.stateVersion = "26.05";
 
-    imports = 
+    imports =
     [ ./home.nix
       ../../modules/user
     ];
-   };
+  };
 
 }
-
-

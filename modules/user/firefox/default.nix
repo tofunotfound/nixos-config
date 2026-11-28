@@ -1,12 +1,12 @@
   { config, lib, pkgs, ... }:
  
   let
-    cfg = config.myHomeModules.packages;
+    cfg = config.myHomeModules.apps;
   in
  
   {
  
-    options.myHomeModules.packages.firefox.enable = lib.mkEnableOption "enable firefox";
+    options.myHomeModules.apps.firefox.enable = lib.mkEnableOption "enable firefox";
 
     config = lib.mkIf cfg.firefox.enable
     { programs.firefox =

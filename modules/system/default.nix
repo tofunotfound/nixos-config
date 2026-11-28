@@ -3,8 +3,7 @@
 {
 
   imports =
-  [ ./user
-    ./bluetooth
+  [ ./bluetooth
     ./features
     ./git
     ./i3

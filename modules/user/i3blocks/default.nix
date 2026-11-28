@@ -2,7 +2,7 @@
 
 let
   after = lib.hm.dag.entryAfter;
-  cfg = config.myHomeModules;
+  cfg = config.myHomeModules.desktop;
 in
 
 {
@@ -17,15 +17,15 @@ in
     ./blocklets/wifi
   ];
 
-  options.myHomeModules.i3blocks.enable = lib.mkEnableOption "enable i3blocks";
+  options.myHomeModules.desktop.i3blocks.enable = lib.mkEnableOption "enable i3blocks";
 
-  config = lib.mkIf cfg.i3.enable (lib.mkIf cfg.i3blocks.enable {
-    programs.i3blocks =
+  config = lib.mkIf cfg.i3.enable (lib.mkIf cfg.i3blocks.enable
+  { programs.i3blocks =
     { enable = true;
 
-      bars = 
-      { config = 
-        { cpu_stat = 
+      bars =
+      { config =
+        { cpu_stat =
           { command = "~/.config/i3blocks/blocklets/cpu_stat";
             interval = 1;
             label = "CPU";

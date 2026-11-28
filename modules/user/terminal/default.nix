@@ -1,14 +1,14 @@
 { config, lib, ... }:
 
 let
-  cfg = config.myHomeModules.terminal;
+  cfg = config.myHomeModules.terminal.default;
 in
 
 {
 
-  options.myHomeModules.terminal = lib.mkOption
+  options.myHomeModules.terminal.default = lib.mkOption
   { type = lib.types.enum [ "alacritty" "kitty" ];
-    default = "kitty";
+    default = "null";
   };
 
   config = lib.mkMerge
@@ -25,7 +25,7 @@ in
         settings =
         { confirm_os_window_close = 0;
 
-          modify_font = "cell_height -4px";
+          #modify_font = "cell_height -3px";
         };
       };
     })

@@ -1,19 +1,19 @@
 { config, lib, ... }:
 
 let
-  cfg = config.myModules.git;
+  cfg = config.myModules.packages.git;
 in
 
 {
  
-  options.myModules.git.enable = lib.mkEnableOption "enable git";
+  options.myModules.packages.git.enable = lib.mkEnableOption "enable git";
 
   config = lib.mkIf cfg.enable {
-    programs.git = 
+    programs.git =
     { enable = true;
 
-      config = 
-      { user = 
+      config =
+      { user =
         { name = "tofunotfound";
           email = "tofunotfound@gmail.com";
         };

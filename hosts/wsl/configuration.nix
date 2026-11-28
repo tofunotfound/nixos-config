@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
@@ -7,34 +7,40 @@
   time.timeZone = "Europe/Minsk";
   i18n.defaultLocale = "ru_RU.UTF-8";
 
+  myModules =
+  { system =
+    { settings.default.enable = true;
+      boot = "wsl"; #"systemd" or "wsl"
+      fstrim.enable = false;
+      zram.enable = false;
+    };
 
-  programs = 
-  { fish.enable = true;  
-    tmux.enable = true;
-  }; 
-
-  myModules = 
-  { boot = "wsl";
-
-    default.enable = true;
-
-    bluetooth.enable = false;
-    git.enable = true;
-    xserveri3.enable = false;
-    pipewire.enable = false;
-    networkmanager.enable = false;
-    fstrim.enable = false;
-    zram.enable = false;
-    openssh.enable = true;
-
-    packages = 
-    { default.enable = true;
+    hardware =
+    { pipewire.enable = false;
+      bluetooth.enable = false;
       brightnessctl.enable = false;
-      font.enable = false;
+    };
+
+    network =
+    { networkmanager.enable = false;
+      openssh.enable = true;
+    };
+
+    desktop =
+    { displayServer.xserver.i3.enable = false;
+      theme.stylix.enable = true;
+    };
+
+    packages =
+    { default.enable = true;
+      git.enable = true;
     };
   };
 
-
-  system.stateVersion = "26.05";
+  programs =
+  { fish.enable = true;
+    tmux.enable = true;
+    steam.enable = false;
+  };
 
 }

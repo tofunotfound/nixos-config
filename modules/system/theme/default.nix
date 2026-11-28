@@ -1,12 +1,12 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  cfg = config.myModules.theme.stylix;
+  cfg = config.myModules.desktop.theme.stylix;
 in
 
 {
 
-  options.myModules.theme.stylix.enable = lib.mkEnableOption "enable stylix";
+  options.myModules.desktop.theme.stylix.enable = lib.mkEnableOption "enable stylix";
 
   config = lib.mkIf cfg.enable
   { stylix =

@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.myHomeModules.nvim;
+  cfg = config.myHomeModules.terminal.nvim;
 in
 
 {
 
-  options.myHomeModules.nvim.enable = lib.mkEnableOption "nvim settings";
+  options.myHomeModules.terminal.nvim.enable = lib.mkEnableOption "nvim settings";
 
-  config = lib.mkIf cfg.enable {
-    home.packages = with pkgs;
+  config = lib.mkIf cfg.enable
+  { home.packages = with pkgs;
     [ ripgrep
       fd
       zk

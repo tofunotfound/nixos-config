@@ -1,22 +1,21 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.myHomeModules;
-  inherit (config.lib.formats.rasi) mkLiteral;
+  cfg = config.myHomeModules.desktop;
 in
 
 {
 
-  options.myHomeModules.rofi.enable = lib.mkEnableOption "enable rofi";
+  options.myHomeModules.desktop.rofi.enable = lib.mkEnableOption "enable rofi";
 
-  options.myHomeModules.rofi.dpi = lib.mkOption
+  options.myHomeModules.desktop.rofi.dpi = lib.mkOption
   { type = lib.types.int;
     default = 200;
   };
 
   config = lib.mkIf cfg.rofi.enable {
     home.packages = with pkgs;
-      [ util-linux playerctl feh ];
+      [ util-linux playerctl ];
 
     programs.rofi =
     { enable = true;
